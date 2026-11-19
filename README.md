@@ -1,7 +1,7 @@
 # Dart OOP Assignment: Kigali Bus Card
 
-Name: Helen Bokeng Mokonde Mateh
-Student ID:** 26288
+**Name:** Helen Bokeng Mokonde Mateh
+**Student ID:** 26288
 
 ## My numbers
 - D = 88, L = 8
