@@ -53,16 +53,7 @@ class BusCard {
   }
 }
 
-void main() {
-  BusCard card = BusCard('Ama', 1880);
-  card.owner = 'Al';         // Should fail
-  card.showInfo();
-  card.topUp(100);           // Should fail
-  card.topUp(2000);          // Should work
-  card.pay(288);             // Should work
-  card.pay(288);             // Should work
-  card.showInfo();
-}
+
 
 class StudentCard extends BusCard {
   int _discount = 0;
@@ -92,4 +83,41 @@ class StudentCard extends BusCard {
     // Step 3: call the PARENT's pay with the reduced fare
     super.pay(fare - off);
   }
+}
+
+void main() {
+  // My numbers: D = 88, L = 8
+  // Starting balance = 1880 RWF, Bus fare = 288 RWF, Discount = 18%
+
+  print('====================================');
+  print('--- PART 1: Regular BusCard ---');
+  print('====================================');
+  
+  BusCard card = BusCard('Ama', 1880); 
+  card.owner = 'Al'; // refused: name too short
+  card.showInfo();
+
+  // TODO 5: change the owner to your full name, then call showInfo()
+  card.owner = 'Helen Mokonde';
+  card.showInfo();
+
+  // TODO 6: top up 100 RWF (must be refused), then top up 2000 RWF
+  card.topUp(100);
+  card.topUp(2000);
+
+  // TODO 7: pay your bus fare 2 times, then call showInfo()
+  card.pay(288);
+  card.pay(288);
+  card.showInfo();
+
+  print('\n====================================');
+  print('--- PART 2 & 3: StudentCard ---');
+  print('====================================');
+
+  // TODO 8: create a StudentCard with your name, starting balance and discount
+  StudentCard student = StudentCard('Helen Mokonde', 1880, 18);
+
+  // TODO 9: pay your bus fare with the student card, then call showInfo()
+  student.pay(288);
+  student.showInfo();
 }
