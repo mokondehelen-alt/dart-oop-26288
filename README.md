@@ -41,14 +41,18 @@ It is a good idea to not have a setter for the balance to protect the data. If t
 We use `~/` here because Rwandan Francs (RWF) are whole numbers; you cannot have a fraction of a Franc. 
 
 ## Part 4: Bug table 
-| Bug |     |code line |   |Why it is wrong|    | Your fix |
 
-| **1** | `String _brand;`<br>`int _battery;` | In Dart, variables must be initialized if they are non-nullable. | Added `= '';` and `= 0;` |
-| **2** | `SmartPhone(String brand...` | The child constructor wasn't passing the brand and battery to the parent class. | Added `: super(brand, battery)` |
-| **3** | `@override` (above restart) | You can only use `@override` if the parent class actually has that method. | Deleted the `@override` line. |
-| **4** | `p.battery = 100;` | The `Phone` class had no setter for the battery, so you can't assign a new value. | Added a setter that only accepts 0 to 100. |
-| **5** | `print(p.battery());` | `battery` is a getter, not a function. Getters don't use parentheses. | Changed to `print(p.battery);` |
-| **Not a bug** | `Phone p = new Phone('Tecno', 50);` | The `new` keyword is optional in modern Dart. It looks outdated, but it is perfectly valid and not an error. | (none) |
+| Bug | The line | Why it is wrong | Your fix |
+| :--- | :--- | :--- | :--- |
+| 1 | `String _brand;` and `int _battery;` | The fields had no starting value AND MUST BE INITIALIZE BEFORE USED | `String _brand = '';` and `int _battery = 0;` |
+| 2 | `SmartPhone(String brand, int battery, String system) {` | It did not call the parent constructor MEANS that the constructor must correctly initialized the object field | Added `: super(brand, battery)` |
+| 3 | `@override void restart()` | The parent Phone has no restart method | Removed `@override` |
+| 4 | `p.battery = 100;` | There was no setter for battery | Added a setter that accepts 0 to 100 |
+| 5 | `print(p.battery());` | battery is a getter, so no () | `print(p.battery);` |
+
+| Not a bug | Why is this line fine? |
+| :--- | :--- |
+| `Phone p = new Phone('Tecno', 50);` | In Dart, new is optional, so the line is allowed |
 
 ## Part 5
 **My prediction:** 
